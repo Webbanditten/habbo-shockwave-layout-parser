@@ -1,0 +1,1 @@
+<window>	<version>		1.0	</version>	<name>		"ph_playback"	</name>	<elements>		[#member: "R_0", #media: #bitmap, #locH: 0, #locV: 0, #ink: 36, #blend: 100, #width: 48, #height: 56, #palette: "pool_palette", #type: "image", #id: "ph_playback_r_img", #strech: #strechHV]	</elements>	<rect>		[15, 11, 63, 67]	</rect></window>
