@@ -1,6 +1,7 @@
 {
-  "name": "web",
+  "name": "habbo-layout-parser",
   "version": "0.1.0",
+  "homepage": "https://webbanditten.github.io/habbo-shockwave-layout-parser/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
