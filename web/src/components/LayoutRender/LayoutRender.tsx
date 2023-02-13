@@ -47,6 +47,17 @@ const getStyleLeft = (element: LayoutElement) => {
     }
     return element.locH;
 }
+
+const getTransform = (element: LayoutElement) => {
+  let transform = "";
+  if (element.flipH === 1) {
+    transform += "scaleX(-1)";
+  }
+  if (element.flipV === 1) {
+    transform += "scaleY(-1)";
+  }
+  return transform;
+}
 const LayoutRender = ({ document }: LayoutRenderProps) => {
   return (<>
     <div
@@ -103,13 +114,8 @@ const LayoutRender = ({ document }: LayoutRenderProps) => {
               element.font === "" || !isNumber(element.font)
                 ? element.font
                 : "Comic Sans MS",
-            fontSize: element.fontSize,
-            transform:
-              element.flipH === 1
-                ? "scaleX(-1)"
-                : element.flipV === 1
-                ? "scaleY(-1)"
-                : "",
+            fontSize: !isNaN(element.fontSize) ? element.fontSize : "0",
+            transform: getTransform(element),
             color: element.txtColor,
           };
 
