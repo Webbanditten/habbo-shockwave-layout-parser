@@ -28,10 +28,27 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy React to GitHub Pages
-        # You may pin to the exact commit or the version.
-        # uses: bitovi/github-actions-react-to-ghp@1782b3410beca05fb72bd089e5620790c0c4d883
-        uses: bitovi/github-actions-react-to-ghp@v1.2.0
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Install yarn
+        run: npm install -g yarn
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          # Specifies the command to run after npm ci for the build
-          build_command: yarn build
+          node-version: '16'
+          cache: 'yarn'
+      - name: Install JS dependencies
+        run: yarn install
+      - name: Build
+        run: yarn build 
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          # Upload entire repository
+          path: './build'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
