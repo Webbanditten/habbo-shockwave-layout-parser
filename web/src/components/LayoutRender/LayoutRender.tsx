@@ -35,7 +35,7 @@ const getStyleTop = (element: LayoutElement) => {
     if (element.flipV === 1) {
         return element.locV - element.height;
     }
-    return element.locV;
+    return element.locV;    
 }
 
 const getStyleLeft = (element: LayoutElement) => {
@@ -75,8 +75,10 @@ const LayoutRender = ({ document }: LayoutRenderProps) => {
       >
         {document.elements?.map((element, index) => {
           let styles: CSSProperties = {
+
+            opacity: element.blend,
             position: "absolute",
-            display: (element.member.includes("mask")) ? "none" : "block",
+            display: (element.member.includes("mask") || element.member.includes("pixel.black")) ? "none" : "block",
             background:
               element.member !== "null" &&
               element.member !== "shadow.pixel" &&
@@ -90,10 +92,9 @@ const LayoutRender = ({ document }: LayoutRenderProps) => {
                 ? "purple"
                 : element.bgColor !== "null"
                 ? element.bgColor
-                : "",
+                : "white",
             left:getStyleLeft(element),
             top: getStyleTop(element),
-            opacity: element.blend,
             backgroundRepeat:
               element.type === "button" || element.type !== "piece"
                 ? "no-repeat"
@@ -106,7 +107,7 @@ const LayoutRender = ({ document }: LayoutRenderProps) => {
             transform:
               element.flipH === 1
                 ? "scaleX(-1)"
-                : element.flipH === 1
+                : element.flipV === 1
                 ? "scaleY(-1)"
                 : "",
             color: element.txtColor,
