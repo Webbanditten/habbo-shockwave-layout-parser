@@ -8,6 +8,8 @@ function App() {
   const [windowIndex, setWindowIndex] = React.useState<number>(
     windows.windows.findIndex((window) => window === "purse.window")
   );
+  const [background, setBackground] = React.useState<string>("#ffffff");
+  const [externalTexts, setExternalTexts] = React.useState<string>("https://dcr.webbanditten.dk/shared/external_texts.php");
   const [windowData, setWindowData] = React.useState<string>("");
   useEffect(() => {
     fetch(`assets/${windows.windows[windowIndex]}`)
@@ -22,8 +24,12 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <div>
+    <div className="App" style={{display:"flex", flexWrap: "wrap"}}>
+      <div style={{display:"flex", alignContent: "flex-start"}}>
+        <label htmlFor="background">Background</label>
+        <input onChange={(e) => setBackground(e.currentTarget.value)} name="background" type="text" value={background} />
+        <label htmlFor="external_texts">External Texts</label>
+        <input onChange={(e) => setExternalTexts(e.currentTarget.value)} name="external_texts" type="text" value={externalTexts} />
         <select defaultValue={windowIndex} onChange={onWindowChange}>
           {windows.windows.map((window, index) => {
             return (
@@ -34,7 +40,7 @@ function App() {
           })}
         </select>
       </div>
-      <div style={{width: "100%", position: "relative"}}>{windowData && <LayoutRender document={LayoutParser(windowData)} />}</div>
+      <div style={{width: "100%", position: "relative", display: "flex"}}>{windowData && <LayoutRender externalTexts={externalTexts} background={background} document={LayoutParser(windowData)} />}</div>
     </div>
   );
 }

@@ -4,6 +4,8 @@ import LayoutElement from "../../types/LayoutElement";
 
 interface LayoutRenderProps {
   document: LayoutDocument;
+  externalTexts: string;
+  background: string;
 }
 
 const assetUrl = (asset: string) => {
@@ -58,7 +60,7 @@ const getTransform = (element: LayoutElement) => {
   }
   return transform;
 }
-const LayoutRender = ({ document }: LayoutRenderProps) => {
+const LayoutRender = ({ document,background,externalTexts }: LayoutRenderProps) => {
   return (<>
     <div
       style={{
@@ -70,6 +72,7 @@ const LayoutRender = ({ document }: LayoutRenderProps) => {
         height: 540,
         border: "1px dashed black",
         fontSize: 10,
+        background: background
       }}
     >
       <div
@@ -128,7 +131,7 @@ const LayoutRender = ({ document }: LayoutRenderProps) => {
         })}
       </div>
     </div>
-      <code>
+      <code style={{background: "#ccc"}}>
         <pre style={{width: "100%", textAlign: "left"}}>{JSON.stringify(document, null, 2)}</pre>
       </code></>
   );
