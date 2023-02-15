@@ -1,16 +1,14 @@
 import React, { CSSProperties } from "react";
 import LayoutDocument from "../../types/LayoutDocument";
 import LayoutElement from "../../types/LayoutElement";
+import assetUrl from "../../utils/assetUrl";
+import ButtonRender from "../ButtonRender/ButtonRender";
 
 interface LayoutRenderProps {
   document: LayoutDocument;
   externalTexts: string;
   background: string;
 }
-
-const assetUrl = (asset: string) => {
-  return `assets/${asset}.png`;
-};
 const isNumber = (num: string) => {
   if (num.match(/^-?\d+$/)) {
     return true;
@@ -126,6 +124,7 @@ const LayoutRender = ({ document,background,externalTexts }: LayoutRenderProps) 
             <div aria-label={element.id} key={index} style={styles}>
               {element.type === "text" ? element.key : ""}
               {element.media === "#text" ? `--?--` : ""}
+              {element.type === "button" && <ButtonRender element={element} />}
             </div>
           );
         })}
