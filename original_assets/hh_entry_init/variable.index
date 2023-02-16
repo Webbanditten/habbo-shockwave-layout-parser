@@ -1,0 +1,1 @@
+#entry init#variable#indexname.length.min=1name.length.max=20pass.length.min=6pass.length.max=9window.boundary.limit=[-20,-20, 20, 100]latencytest.interval=20000latencytest.report.index=15latencytest.report.delta=100            

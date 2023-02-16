@@ -1,0 +1,1 @@
+#sound machine#specific#variablessoundmachine.songlist.manager   = ["SongList Manager Class"]soundmachine.song.timeline   = ["Song TimeLine Class"]soundmachine.instance   = ["Sound Machine Instance"]soundmachine.jukebox.manager   = ["Jukebox Manager Class"]

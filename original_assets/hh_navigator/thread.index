@@ -1,0 +1,1 @@
+#navigator#thread#indexthread.id       = navigatorinterface.class = ["Navigator Roomlist Interface Class", "Navigator Window Interface Class"]#interface.class = ["Navigator Window Interface Class", "Navigator Roomlist Interface Class"]component.class = Navigator Component Classhandler.class   = Navigator Handler Class

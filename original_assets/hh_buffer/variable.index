@@ -1,0 +1,1 @@
+#buffer#specific#variables# Set this to positive value to simulate the downloads with timers (delay in milliseconds)buffer.simulateddownload=0
