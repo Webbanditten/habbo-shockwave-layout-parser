@@ -1,5 +1,6 @@
 import LayoutDocument from "../../types/LayoutDocument";
 import LayoutElement from "../../types/LayoutElement";
+import getElements from "../../utils/getElements";
 
 const transformStringToXML = (windowData: string) => {
     const parser = new DOMParser();
@@ -45,78 +46,18 @@ const getDocumentBorder = (document: string) => {
     }
 }
 
-function getElementPropVal(arr: string[], search: string) {
-    var result = "";
-      arr.forEach(function(item) {
-        if(item.startsWith(`#${search}:`)) {
-          result = item.split(": ")[1];
-      }
-      
-    });
-    return sanitizeString(result);
-  }
-const sanitizeString = (string: string) => {
-    return string.replaceAll('"', '');
-}
-const getElements = (document: string): LayoutElement[] => {
+
+export const getElementsFromDoc = (document: string): LayoutElement[] => {
     if(document === null) throw new Error("document is null");
     const rawElements = getDocumentTagValue(document, "elements") ?? "";
-    let elements: LayoutElement[] = [];
-
-    const regex = /\[(.*?)\]/gm;
-    let m;
-    console.log(rawElements)
-    while ((m = regex.exec(rawElements)) !== null) {
-
-        // This is necessary to avoid infinite loops with zero-width matches
-        if (m.index === regex.lastIndex) {
-            regex.lastIndex++;
-        }
-        
-        // The result can be accessed through the `m`-variable.
-        var blocks = m[1].split(", ");
-        let element: LayoutElement = {
-            member: (getElementPropVal(blocks, "member")),
-            media: (getElementPropVal(blocks, "media")),
-            locH: parseInt(getElementPropVal(blocks, "locH")),
-            locV: parseInt(getElementPropVal(blocks, "locV")),
-            ink: parseInt(getElementPropVal(blocks, "ink")),
-            blend: parseInt(getElementPropVal(blocks, "blend")),
-            width: parseInt(getElementPropVal(blocks, "width")),
-            height: parseInt(getElementPropVal(blocks, "height")),
-            palette: getElementPropVal(blocks, "palette"),
-            type: (getElementPropVal(blocks, "type")),
-            id: (getElementPropVal(blocks, "id")),
-            model: getElementPropVal(blocks, "model"),
-            key: (getElementPropVal(blocks, "key")),
-            alignment: getElementPropVal(blocks, "alignment"),
-            fixedsize: parseInt(getElementPropVal(blocks, "fixedsize")),
-            maxwidth: parseInt(getElementPropVal(blocks, "maxwidth")),
-            cursor: getElementPropVal(blocks, "cursor"),
-            font: getElementPropVal(blocks, "font"),
-            fontSize: parseInt(getElementPropVal(blocks, "fontSize")),
-            fontStyle: getElementPropVal(blocks, "fontStyle"),
-            stretch: getElementPropVal(blocks, "stretch"),
-            lineHeight: parseInt(getElementPropVal(blocks, "lineHeight")),
-            txtColor: getElementPropVal(blocks, "txtColor"),
-            color: getElementPropVal(blocks, "color"),
-            bgColor: getElementPropVal(blocks, "bgColor"),
-            flipH: parseInt(getElementPropVal(blocks, "flipH")),
-            flipV: parseInt(getElementPropVal(blocks, "flipV"))
-            
-        }
-
-        elements.push(element);
-        
-    }
-    return elements;
+    return getElements(rawElements)
 }
 
 
 const LayoutParser = (document: string): LayoutDocument => {
     const rect = getDocumentRect(document);
     const border = getDocumentBorder(document);
-    const elements = getElements(document);
+    const elements = getElementsFromDoc(document);
     let layoutDocument: LayoutDocument = {
         version: getDocumentTagValue(document, "version"),
         name: getDocumentTagValue(document, "name"),
