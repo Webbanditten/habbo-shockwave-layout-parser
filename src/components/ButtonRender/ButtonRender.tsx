@@ -1,5 +1,4 @@
-import React, { CSSProperties } from "react";
-import LayoutDocument from "../../types/LayoutDocument";
+import { CSSProperties } from "react";
 import LayoutElement from "../../types/LayoutElement";
 
 interface ButtonRenderProps {
@@ -9,7 +8,7 @@ interface ButtonRenderProps {
 const ButtonRender = ({ element }: ButtonRenderProps) => {
   let styles: CSSProperties = {
     height: element.height,
-  }
+  };
 
   return (
     <div aria-label={element.id} style={styles}>
