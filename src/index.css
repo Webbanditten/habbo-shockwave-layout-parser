@@ -17,11 +17,17 @@
       format("truetype"); /* Safari, Android, iOS */
 }
 @font-face {
-    font-family: "v";
-    src: url("../public/assets/Volter__28Goldfish_29.woff") format("woff"),
-      /* Pretty Modern Browsers */ url("../public/assets/volter.ttf")
-        format("truetype"); /* Safari, Android, iOS */
-  }
+  font-family: "v";
+  src: url("../public/assets/Volter__28Goldfish_29.woff") format("woff"),
+    /* Pretty Modern Browsers */ url("../public/assets/volter.ttf")
+      format("truetype"); /* Safari, Android, iOS */
+}
+@font-face {
+  font-family: "Volter";
+  src: url("../public/assets/Volter__28Goldfish_29.woff") format("woff"),
+    /* Pretty Modern Browsers */ url("../public/assets/volter.ttf")
+      format("truetype"); /* Safari, Android, iOS */
+}
 body {
   margin: 0;
   font-smooth: never;

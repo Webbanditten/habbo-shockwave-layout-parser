@@ -26,6 +26,7 @@ interface LayoutElement {
   bgColor: string;
   flipH: number;
   flipV: number;
+  active: number;
 }
 
 export default LayoutElement;

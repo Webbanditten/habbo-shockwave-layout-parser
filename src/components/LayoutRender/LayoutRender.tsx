@@ -25,7 +25,9 @@ function parseText(text: string): Record<string, string> {
     const parts = lines[i].split("=");
     const key = parts[0];
     const value = parts[1];
-    result[key] = value;
+    if (value) {
+      result[key] = value;
+    }
   }
   return result;
 }
@@ -72,6 +74,37 @@ const getTransform = (element: LayoutElement) => {
     transform += "scaleY(-1)";
   }
   return transform;
+};
+
+const getBackground = (document: LayoutDocument, element: LayoutElement) => {
+  if (
+    element.member === "shadow.pixel" ||
+    element.type === "image" ||
+    element.member === "null"
+  ) {
+    return "";
+  }
+  if (element.media === "bitmap") {
+    if (element.active.toString() === "0") {
+      return `url(${assetUrl(document.name + "_" + element.member)})`;
+    }
+    return `url(${assetUrl(element.member)})`;
+  }
+};
+
+const getBackgroundSize = (element: LayoutElement) => {
+  return element.stretch === "fixed" ? "contain" : "initial";
+};
+const getAlignment = (element: LayoutElement) => {
+  if (element.alignment === "center") {
+    return "center";
+  }
+  if (element.alignment === "left") {
+    return "flex-start";
+  }
+  if (element.alignment === "right") {
+    return "flex-end";
+  }
 };
 const LayoutRender = ({
   document,
@@ -123,17 +156,13 @@ const LayoutRender = ({
                 element.member.includes("mask") ||
                 element.member.includes("pixel.black")
                   ? "none"
-                  : "block",
-              background:
-                element.member !== "null" &&
-                element.member !== "shadow.pixel" &&
-                element.media === "#bitmap"
-                  ? `url(${assetUrl(element.member)})`
-                  : "",
+                  : "flex",
+              background: getBackground(document, element),
               width: element.width,
               height: element.height,
-              backgroundSize:
-                element.stretch === "#fixed" ? "contain" : "initial",
+              flexWrap: "wrap",
+              flexDirection: "column",
+              backgroundSize: getBackgroundSize(element),
               backgroundColor:
                 element.member === "shadow.pixel"
                   ? "purple"
@@ -142,23 +171,39 @@ const LayoutRender = ({
                   : "white",
               left: getStyleLeft(element),
               top: getStyleTop(element),
+              alignContent: element.alignment
+                ? getAlignment(element)
+                : "center",
+              textDecoration: element.fontStyle,
               backgroundRepeat:
                 element.type === "button" || element.type !== "piece"
                   ? "no-repeat"
-                  : "",
+                  : "repeat",
               fontFamily:
                 element.font === "" || !isNumber(element.font)
                   ? element.font
                   : "Comic Sans MS",
               fontSize: !isNaN(element.fontSize) ? element.fontSize : "0",
               transform: getTransform(element),
-              color: element.txtColor,
+              color: "#" + element.txtColor,
             };
 
             return (
               <div aria-label={element.id} key={index} style={styles}>
-                {element.type === "text" ? et && et[element.key] : ""}
-                {element.media === "#text" ? `--?--` : ""}
+                {element.type === "text" ? (
+                  et && et[element.key] ? (
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: et[element.key].replace("\\r", "<br />"),
+                      }}
+                    ></div>
+                  ) : (
+                    ""
+                  )
+                ) : (
+                  ""
+                )}
+                {element.media === "text" ? `--?--` : ""}
                 {element.type === "button" && (
                   <ButtonRender element={element} />
                 )}
