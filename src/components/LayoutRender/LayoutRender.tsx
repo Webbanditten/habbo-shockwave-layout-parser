@@ -19,7 +19,11 @@ const isNumber = (num: string) => {
   }
 };
 function parseText(text: string): Record<string, string> {
-  const lines = text.split("\r\n");
+  let lines = text.split("\r\n");
+  if (lines.length < 10) {
+    lines = text.split("\n");
+  }
+  console.log(lines);
   const result: Record<string, string> = {};
   for (let i = 0; i < lines.length; i++) {
     const parts = lines[i].split("=");
