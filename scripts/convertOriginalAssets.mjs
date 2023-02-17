@@ -13,36 +13,18 @@ function convert(filePath, fileName) {
 
   // Define shave parameters
   const shaveParams = `${borderSize}x${borderSize}`;
-
+  console.log(inputFilePath);
   // Add border and flood fill with transparency
-  im.convert(
-    [
-      inputFilePath,
-      "-bordercolor",
-      borderColor,
-      "-border",
-      `${borderSize}x${borderSize}`,
-      "-fuzz",
-      "10%",
-      "-fill",
-      fillColor,
-      "-draw",
-      `color 0,0 floodfill`,
-      "-shave",
-      shaveParams,
-      outputFilePath,
-    ],
-    (err) => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-
-      console.log(
-        `Successfully added border, flood filled with ${fillColor}, and removed border from ${inputFilePath}. Result saved to ${outputFilePath}.`
-      );
+  im.convert([inputFilePath, "resize", "50%", outputFilePath], (err) => {
+    if (err) {
+      console.error(err);
+      return;
     }
-  );
+
+    console.log(
+      `Successfully added border, flood filled with ${fillColor}, and removed border from ${inputFilePath}. Result saved to ${outputFilePath}.`
+    );
+  });
 }
 
 function listPngFiles(folderPath) {
@@ -57,7 +39,7 @@ function listPngFiles(folderPath) {
       if (file.isDirectory()) {
         listPngFiles(filePath);
       } else if (extname(filePath) === ".png") {
-        console.log(filePath);
+        //console.log(filePath);
         convert(filePath, file.name);
       }
     });
@@ -65,4 +47,4 @@ function listPngFiles(folderPath) {
 }
 
 // Example usage:
-listPngFiles("./original_assets");
+listPngFiles("./original_assets/hh_interface");
