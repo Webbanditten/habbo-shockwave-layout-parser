@@ -193,7 +193,11 @@ const LayoutRender = ({
             };
 
             return (
-              <div aria-label={element.id} key={index} style={styles}>
+              <div
+                aria-label={element.id}
+                key={document.name + "_" + index}
+                style={styles}
+              >
                 {element.type === "text" ? (
                   et && et[element.key] ? (
                     <div
