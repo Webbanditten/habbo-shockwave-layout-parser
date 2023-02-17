@@ -24,7 +24,7 @@ function getElement(blocks: string[]): LayoutElement {
     font: elementParser.val("font"),
     fontSize: parseInt(elementParser.val("fontSize")),
     fontStyle: elementParser.val("fontStyle"),
-    stretch: elementParser.val("stretch"),
+    stretch: elementParser.val("strech"),
     lineHeight: parseInt(elementParser.val("lineHeight")),
     txtColor: elementParser.val("txtColor"),
     color: elementParser.val("color"),
