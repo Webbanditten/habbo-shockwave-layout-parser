@@ -32,6 +32,7 @@ function getElement(blocks: string[]): LayoutElement {
     flipH: parseInt(elementParser.val("flipH")),
     flipV: parseInt(elementParser.val("flipV")),
     active: parseInt(elementParser.val("Active")),
+    buttonProps: elementParser.parseButtonProp(),
   };
   return element;
 }

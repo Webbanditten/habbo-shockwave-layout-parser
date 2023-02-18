@@ -1,7 +1,13 @@
 import React, { CSSProperties, useEffect, useState } from "react";
 import LayoutDocument from "../../types/LayoutDocument";
-import LayoutElement from "../../types/LayoutElement";
-import assetUrl from "../../utils/assetUrl";
+import {
+  getAlignment,
+  getBackground,
+  getBackgroundSize,
+  getStyleLeft,
+  getStyleTop,
+  getTransform,
+} from "../../utils/styles";
 import ButtonRender from "../ButtonRender/ButtonRender";
 
 interface LayoutRenderProps {
@@ -23,7 +29,6 @@ function parseText(text: string): Record<string, string> {
   if (lines.length < 10) {
     lines = text.split("\n");
   }
-  console.log(lines);
   const result: Record<string, string> = {};
   for (let i = 0; i < lines.length; i++) {
     const parts = lines[i].split("=");
@@ -40,76 +45,6 @@ const fetchExternalTexts = (externalTextsUrl: string) => {
   return fetch(externalTextsUrl).then((response) => response.text());
 };
 
-const getStyleTop = (element: LayoutElement) => {
-  /*if(element.member.includes("door")) {
-        return element.locV - element.height;
-    }
-    if(element.member.includes("wallpart")) {
-        return element.locV - element.height;
-    }
-    if(element.member.includes("wallend")) {
-        return element.locV - element.height;
-    }
-    if(element.member.includes("floor")) {
-        return element.locV - (element.height/2);
-    }*/
-  if (element.flipV === 1) {
-    return element.locV - element.height;
-  }
-  return element.locV;
-};
-
-const getStyleLeft = (element: LayoutElement) => {
-  /*if(element.member.includes("door")) {
-        return element.locH - (element.width/2);
-    }*/
-  if (element.flipH === 1) {
-    return element.locH - element.width;
-  }
-  return element.locH;
-};
-
-const getTransform = (element: LayoutElement) => {
-  let transform = "";
-  if (element.flipH === 1) {
-    transform += "scaleX(-1)";
-  }
-  if (element.flipV === 1) {
-    transform += "scaleY(-1)";
-  }
-  return transform;
-};
-
-const getBackground = (document: LayoutDocument, element: LayoutElement) => {
-  if (
-    element.member === "shadow.pixel" ||
-    element.type === "image" ||
-    element.member === "null"
-  ) {
-    return "";
-  }
-  if (element.media === "bitmap") {
-    if (element.active.toString() === "0") {
-      return `url(${assetUrl(document.name + "_" + element.member)})`;
-    }
-    return `url(${assetUrl(element.member)})`;
-  }
-};
-
-const getBackgroundSize = (element: LayoutElement) => {
-  return element.stretch === "fixed" ? "contain" : "initial";
-};
-const getAlignment = (element: LayoutElement) => {
-  if (element.alignment === "center") {
-    return "center";
-  }
-  if (element.alignment === "left") {
-    return "flex-start";
-  }
-  if (element.alignment === "right") {
-    return "flex-end";
-  }
-};
 const LayoutRender = ({
   document,
   background,
@@ -119,10 +54,12 @@ const LayoutRender = ({
   useEffect(() => {
     fetchExternalTexts(externalTexts).then((data) => {
       const parsedText = parseText(data);
-      console.log(parsedText);
       setEt(parsedText);
     });
   }, [externalTexts]);
+  if (et === null) {
+    return <div>Loading</div>;
+  }
   return (
     <>
       <div
@@ -162,8 +99,8 @@ const LayoutRender = ({
                   ? "none"
                   : "flex",
               background: getBackground(document, element),
-              width: element.width,
-              height: element.height,
+              width: element.type !== "button" ? element.width : undefined,
+              height: element.type !== "button" ? element.height : undefined,
               flexWrap: "wrap",
               flexDirection: "column",
               backgroundSize: getBackgroundSize(element),
@@ -202,7 +139,7 @@ const LayoutRender = ({
                   et && et[element.key] ? (
                     <div
                       dangerouslySetInnerHTML={{
-                        __html: et[element.key].replace("\\r", "<br />"),
+                        __html: et[element.key].replaceAll("\\r", "<br />"),
                       }}
                     ></div>
                   ) : (
@@ -213,7 +150,11 @@ const LayoutRender = ({
                 )}
                 {element.media === "text" ? `--?--` : ""}
                 {element.type === "button" && (
-                  <ButtonRender element={element} />
+                  <ButtonRender
+                    parentDocument={document}
+                    parentElement={element}
+                    externalTexts={et}
+                  />
                 )}
               </div>
             );

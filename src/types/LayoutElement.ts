@@ -1,3 +1,28 @@
+export interface ButtonProps {
+  state: string | null;
+  members: {
+    left: {
+      member: string | null;
+    };
+    right: {
+      member: string | null;
+    };
+    middle: {
+      member: string | null;
+    };
+  };
+  text: {
+    font: string | null;
+    fontSize: number | null;
+    fontStyle: string | null;
+    alignment: string | null;
+    color: string | null;
+    bgColor: string | null;
+    boxType: string | null;
+    marginH: number | null;
+    marginV: number | null;
+  };
+}
 interface LayoutElement {
   member: string;
   media: string;
@@ -27,6 +52,7 @@ interface LayoutElement {
   flipH: number;
   flipV: number;
   active: number;
+  buttonProps: ButtonProps;
 }
 
 export default LayoutElement;

@@ -1,5 +1,5 @@
-const assetUrl = (asset: string) => {
-  return `assets/${asset}.png`;
+const assetUrl = (asset: string, type: "png" | "element") => {
+  return `assets/${asset}.${type}`;
 };
 
 export default assetUrl;
