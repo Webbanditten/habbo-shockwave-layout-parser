@@ -106,7 +106,9 @@ const LayoutRender = ({
               backgroundSize: getBackgroundSize(element),
               backgroundColor:
                 element.member === "shadow.pixel"
-                  ? "purple"
+                  ? element.type === "button"
+                    ? ""
+                    : "purple"
                   : element.bgColor !== "null"
                   ? element.bgColor
                   : "white",
@@ -127,6 +129,17 @@ const LayoutRender = ({
               fontSize: !isNaN(element.fontSize) ? element.fontSize : "0",
               transform: getTransform(element),
               color: "#" + element.txtColor,
+              textAlign:
+                element.type !== "button"
+                  ? (element.alignment as
+                      | "start"
+                      | "end"
+                      | "left"
+                      | "right"
+                      | "center"
+                      | "justify"
+                      | "match-parent") ?? "left"
+                  : undefined,
             };
 
             return (
