@@ -41,6 +41,14 @@ const ButtonRender = ({
   return (
     <div aria-label={parentElement.id} style={styles}>
       {buttonParts?.map((part, index) => {
+        const buttonTextContent = () => {
+          try {
+            return externalTexts[parentElement.key].replaceAll("\\r", "<br />");
+          } catch (e) {
+            console.error("failed to put button content, ", parentElement.key);
+            return "";
+          }
+        };
         console.log(part.buttonProps.text.alignment);
         const leftAsset = assetUrl(
           part.buttonProps.members.left.member ?? "",
@@ -80,12 +88,10 @@ const ButtonRender = ({
 
         return (
           <div
+            key={part.member + "_" + index}
             style={buttonStyles}
             dangerouslySetInnerHTML={{
-              __html: externalTexts[parentElement.key].replaceAll(
-                "\\r",
-                "<br />"
-              ),
+              __html: buttonTextContent(),
             }}
           ></div>
         );

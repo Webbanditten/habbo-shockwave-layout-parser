@@ -7,23 +7,37 @@ class ElementParser {
     this.blocks = blocks;
   }
   getButtonMemberPropVal(members: string, search: string) {
-    let result = "";
-    members.split("], ").forEach(function (item) {
-      if (item.startsWith(`#${search}:`)) {
-        result = item.replaceAll("]", "").replaceAll("[", "");
-        result = result.replace(`#${search}:`, "").trim();
-      }
-    });
-    return result;
+    try {
+      let result = "";
+      members.split("], ").forEach(function (item) {
+        if (item.startsWith(`#${search}:`)) {
+          try {
+            result = item.replaceAll("]", "").replaceAll("[", "");
+          } catch (e) {
+            result = item;
+          }
+          result = result.replace(`#${search}:`, "").trim();
+        }
+      });
+      return result;
+    } catch (e) {
+      console.log(e);
+      return "";
+    }
   }
   getPropVal(blocks: string[], search: string) {
-    let result = "";
-    blocks.forEach(function (item) {
-      if (item.startsWith(`#${search}:`)) {
-        result = item.split(": ")[1].replace("#", "");
-      }
-    });
-    return sanitizeString(result);
+    try {
+      let result = "";
+      blocks.forEach(function (item) {
+        if (item.startsWith(`#${search}:`)) {
+          result = item.split(": ")[1].replace("#", "");
+        }
+      });
+      return sanitizeString(result);
+    } catch (e) {
+      console.log(e);
+      return "";
+    }
   }
 
   val(search: string) {

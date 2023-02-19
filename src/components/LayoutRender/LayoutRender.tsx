@@ -94,9 +94,11 @@ const LayoutRender = ({
               cursor:
                 element.cursor === "cursor.finger" ? "pointer" : "default",
               display:
-                element.member.includes("mask") ||
-                element.member.includes("pixel.black")
-                  ? "none"
+                element.type !== "button"
+                  ? element.member.includes("mask") ||
+                    element.member.includes("pixel.black")
+                    ? "none"
+                    : "flex"
                   : "flex",
               background: getBackground(document, element),
               width: element.type !== "button" ? element.width : undefined,
