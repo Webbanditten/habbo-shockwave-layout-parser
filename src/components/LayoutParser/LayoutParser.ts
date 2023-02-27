@@ -47,6 +47,37 @@ const getDocumentBorder = (document: string) => {
   };
 };
 
+const getRoomDataFromDoc = (document: string) => {
+  if (document === null) throw new Error("document is null");
+  let roomdata = getDocumentTagValue(document, "roomdata");
+
+  if (roomdata === null) roomdata = "[0,0,0,0,0]";
+
+  const roomdataArray = sanitizeString(roomdata)
+    .replace("[", "")
+    .replace("]", "")
+    .split(",");
+
+  console.log(roomdataArray);
+  return {
+    offsetx: parseInt(
+      sanitizeString(roomdataArray[0].replace("#offsetx:", ""))
+    ),
+    offsety: parseInt(
+      sanitizeString(roomdataArray[1].replace("#offsety:", ""))
+    ),
+    factorx: parseInt(
+      sanitizeString(roomdataArray[2].replace("#factorx:", ""))
+    ),
+    factory: parseInt(
+      sanitizeString(roomdataArray[3].replace("#factory:", ""))
+    ),
+    factorh: parseInt(
+      sanitizeString(roomdataArray[4].replace("#factorh:", ""))
+    ),
+  };
+};
+
 export const getElementsFromDoc = (document: string): LayoutElement[] => {
   if (document === null) throw new Error("document is null");
   const rawElements = getDocumentTagValue(document, "elements") ?? "";
@@ -57,6 +88,8 @@ const LayoutParser = (document: string): LayoutDocument => {
   const rect = getDocumentRect(document);
   const border = getDocumentBorder(document);
   const elements = getElementsFromDoc(document);
+
+  const roomdata = getRoomDataFromDoc(document);
   let layoutDocument: LayoutDocument = {
     version: getDocumentTagValue(document, "version"),
     name: sanitizeString(getDocumentTagValue(document, "name") ?? ""),
@@ -64,6 +97,7 @@ const LayoutParser = (document: string): LayoutDocument => {
     elements,
     rect,
     border,
+    roomdata,
   };
 
   return layoutDocument;

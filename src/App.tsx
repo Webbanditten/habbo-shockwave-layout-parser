@@ -3,6 +3,7 @@ import LayoutParser from "./components/LayoutParser/LayoutParser";
 import "./App.css";
 import { default as windows } from "./windows.json";
 import LayoutRender from "./components/LayoutRender/LayoutRender";
+import RoomRender from "./components/RoomRender/RoomRender";
 
 function App() {
   const [windowIndex, setWindowIndex] = React.useState<number>(
@@ -52,13 +53,20 @@ function App() {
         </select>
       </div>
       <div style={{ width: "100%", position: "relative", display: "flex" }}>
-        {windowData && (
-          <LayoutRender
-            externalTexts={externalTexts}
-            background={background}
-            document={LayoutParser(windowData)}
-          />
-        )}
+        {windowData &&
+          (!windows.windows[windowIndex].includes(".room") ? (
+            <LayoutRender
+              externalTexts={externalTexts}
+              background={background}
+              document={LayoutParser(windowData)}
+            />
+          ) : (
+            <RoomRender
+              externalTexts={externalTexts}
+              background={background}
+              document={LayoutParser(windowData)}
+            />
+          ))}
       </div>
     </div>
   );

@@ -31,6 +31,7 @@ interface LayoutElement {
   media: string;
   locH: number;
   locV: number;
+  locZ: number;
   ink: number;
   blend: number;
   width: number;

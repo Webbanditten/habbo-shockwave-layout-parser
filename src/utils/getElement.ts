@@ -6,6 +6,7 @@ function getElement(blocks: string[]): LayoutElement {
   let element: LayoutElement = {
     member: elementParser.val("member"),
     media: elementParser.val("media"),
+    locZ: parseInt(elementParser.val("locZ")),
     locH: parseInt(elementParser.val("locH")),
     locV: parseInt(elementParser.val("locV")),
     ink: parseInt(elementParser.val("ink")),
