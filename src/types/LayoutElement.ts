@@ -3,12 +3,15 @@ export interface ButtonProps {
   members: {
     left: {
       member: string | null;
+      cast: string | null;
     };
     right: {
       member: string | null;
+      cast: string | null;
     };
     middle: {
       member: string | null;
+      cast: string | null;
     };
   };
   text: {

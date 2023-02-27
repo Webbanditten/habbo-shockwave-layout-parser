@@ -38,6 +38,7 @@ const ButtonRender = ({
       }
     });
   }, [parentElement]);
+
   return (
     <div aria-label={parentElement.id} style={styles}>
       {buttonParts?.map((part, index) => {
@@ -62,11 +63,47 @@ const ButtonRender = ({
           part.buttonProps.members.right.member ?? "",
           "png"
         );
-        const buttonStyles: CSSProperties = {
+        const leftPart: CSSProperties = {
+          background: `url(${leftAsset}) left top no-repeat`,
+        };
+        const middlePart: CSSProperties = {
+          background: `url(${middleAsset}) center top repeat-x`,
           height: parentElement.height,
-          /*minWidth: parentElement.width,*/
           maxWidth: parentElement.maxwidth,
-          background: `url(${leftAsset}) left top no-repeat, url(${rightAsset}) right top no-repeat, url(${middleAsset}) center top repeat-x`,
+          fontSize: part.buttonProps.text.fontSize ?? "",
+          fontFamily: part.buttonProps.text.font ?? "",
+          fontStyle: part.buttonProps.text.fontStyle ?? "",
+          paddingTop: part.buttonProps.text.marginV ?? "",
+          paddingLeft:
+            part.buttonProps.text.alignment !== "center"
+              ? part.buttonProps.text.marginH ?? ""
+              : "",
+          paddingRight:
+            part.buttonProps.text.alignment !== "center"
+              ? part.buttonProps.text.marginH ?? ""
+              : "",
+          textAlign:
+            (part.buttonProps.text.alignment as
+              | "start"
+              | "end"
+              | "left"
+              | "right"
+              | "center"
+              | "justify"
+              | "match-parent") ?? "left",
+        };
+        console.log(part);
+        const rightPart: CSSProperties = {
+          background: `url(${rightAsset}) right top no-repeat`,
+          transform: part.buttonProps.members.right.cast?.includes("flipH")
+            ? "scaleX(-1)"
+            : "",
+        };
+        /*const buttonStyles: CSSProperties = {
+          height: parentElement.height,
+        
+          maxWidth: parentElement.maxwidth,
+          background: `url(${middleAsset}) center top repeat-x`,
           fontSize: part.buttonProps.text.fontSize ?? "",
           fontFamily: part.buttonProps.text.font ?? "",
           fontStyle: part.buttonProps.text.fontStyle ?? "",
@@ -84,16 +121,30 @@ const ButtonRender = ({
               | "center"
               | "justify"
               | "match-parent") ?? "left",
+        };*/
+
+        const buttonStyles: CSSProperties = {
+          display: "flex",
         };
 
         return (
-          <div
-            key={part.member + "_" + index}
-            style={buttonStyles}
-            dangerouslySetInnerHTML={{
-              __html: buttonTextContent(),
-            }}
-          ></div>
+          <>
+            <div style={buttonStyles}>
+              <div style={leftPart}>
+                <img src={leftAsset} alt="left" />
+              </div>
+              <div
+                key={part.member + "_" + index}
+                style={middlePart}
+                dangerouslySetInnerHTML={{
+                  __html: buttonTextContent(),
+                }}
+              ></div>
+              <div style={rightPart}>
+                <img src={rightAsset} alt="right" />
+              </div>
+            </div>
+          </>
         );
       })}
     </div>

@@ -49,12 +49,15 @@ class ElementParser {
       members: {
         left: {
           member: null,
+          cast: null,
         },
         right: {
           member: null,
+          cast: null,
         },
         middle: {
           member: null,
+          cast: null,
         },
       },
       text: {
@@ -92,8 +95,14 @@ class ElementParser {
       );
 
       r.members.left.member = this.getPropVal(left, "member");
+      r.members.left.cast = this.getPropVal(left, "cast");
+
       r.members.middle.member = this.getPropVal(middle, "member");
+      r.members.middle.cast = this.getPropVal(middle, "cast");
+
       r.members.right.member = this.getPropVal(right, "member");
+      r.members.right.cast = this.getPropVal(right, "cast");
+
       r.text.font = this.getPropVal(text, "font");
       r.text.fontSize = parseInt(this.getPropVal(text, "fontSize"));
       r.text.fontStyle = this.getPropVal(text, "fontStyle");
