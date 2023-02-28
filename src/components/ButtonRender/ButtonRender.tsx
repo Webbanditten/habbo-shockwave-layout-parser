@@ -125,6 +125,14 @@ const ButtonRender = ({
 
         const buttonStyles: CSSProperties = {
           display: "flex",
+          justifyContent:
+            parentElement.alignment === "right"
+              ? "flex-end"
+              : parentElement.alignment === "center"
+              ? "center"
+              : "flex-start",
+          width: parentElement.width,
+          height: parentElement.height,
         };
 
         return (
