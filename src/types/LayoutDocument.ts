@@ -1,4 +1,4 @@
-import LayoutElement from "./LayoutElement";
+import LayoutElement from './LayoutElement';
 
 interface LayoutDocument {
   name: string | null;
@@ -23,6 +23,12 @@ interface LayoutDocument {
     factorx: number;
     factory: number;
     factorh: number;
+  };
+  clientrect: {
+    left: number;
+    top: number;
+    right: number;
+    bottom: number;
   };
 }
 

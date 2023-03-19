@@ -1,18 +1,18 @@
-import React, { useEffect } from "react";
-import LayoutParser from "./components/LayoutParser/LayoutParser";
-import "./App.css";
-import { default as windows } from "./windows.json";
-import LayoutRender from "./components/LayoutRender/LayoutRender";
-import RoomRender from "./components/RoomRender/RoomRender";
+import React, { useEffect } from 'react';
+import LayoutParser from './components/LayoutParser/LayoutParser';
+import './App.css';
+import { default as windows } from './windows.json';
+import LayoutRender from './components/LayoutRender/LayoutRender';
+import RoomRender from './components/RoomRender/RoomRender';
 
 function App() {
   const [windowIndex, setWindowIndex] = React.useState<number>(
-    windows.windows.findIndex((window) => window === "purse.window")
+    windows.windows.findIndex((window) => window === 'purse.window')
   );
-  const [background, setBackground] = React.useState<string>("#ffffff");
+  const [background, setBackground] = React.useState<string>('#ffffff');
   const [externalTexts, setExternalTexts] =
-    React.useState<string>("./texts/dk.txt");
-  const [windowData, setWindowData] = React.useState<string>("");
+    React.useState<string>('./texts/dk.txt');
+  const [windowData, setWindowData] = React.useState<string>('');
   useEffect(() => {
     fetch(`assets/${windows.windows[windowIndex]}`)
       .then((response) => response.text())
@@ -26,8 +26,8 @@ function App() {
   };
 
   return (
-    <div className="App" style={{ display: "flex", flexWrap: "wrap" }}>
-      <div style={{ display: "flex", alignContent: "flex-start" }}>
+    <div className="App" style={{ display: 'flex', flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', alignContent: 'flex-start' }}>
         <label htmlFor="background">Background</label>
         <input
           onChange={(e) => setBackground(e.currentTarget.value)}
@@ -52,13 +52,14 @@ function App() {
           })}
         </select>
       </div>
-      <div style={{ width: "100%", position: "relative", display: "flex" }}>
+      <div style={{ width: '100%', position: 'relative', display: 'flex' }}>
         {windowData &&
-          (!windows.windows[windowIndex].includes(".room") ? (
+          (!windows.windows[windowIndex].includes('.room') ? (
             <LayoutRender
               externalTexts={externalTexts}
               background={background}
               document={LayoutParser(windowData)}
+              debug={false}
             />
           ) : (
             <RoomRender
@@ -67,6 +68,13 @@ function App() {
               document={LayoutParser(windowData)}
             />
           ))}
+      </div>
+      <div style={{ width: '100%', position: 'relative', display: 'flex' }}>
+        <textarea
+          onChange={(e) => setWindowData(e.currentTarget.value)}
+          style={{ width: '100%', minHeight: '450px' }}
+          value={windowData}
+        ></textarea>
       </div>
     </div>
   );

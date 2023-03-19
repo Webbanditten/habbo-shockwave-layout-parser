@@ -1,5 +1,5 @@
-import React, { CSSProperties, useEffect, useState } from "react";
-import LayoutDocument from "../../types/LayoutDocument";
+import React, { CSSProperties, useEffect, useState } from 'react';
+import LayoutDocument from '../../types/LayoutDocument';
 import {
   getAlignment,
   getBackground,
@@ -7,13 +7,14 @@ import {
   getStyleLeft,
   getStyleTop,
   getTransform,
-} from "../../utils/styles";
-import ButtonRender from "../ButtonRender/ButtonRender";
+} from '../../utils/styles';
+import ButtonRender from '../ButtonRender/ButtonRender';
 
 interface LayoutRenderProps {
   document: LayoutDocument;
   externalTexts: string;
   background: string;
+  debug: boolean;
 }
 const isNumber = (num: string) => {
   if (num.match(/^-?\d+$/)) {
@@ -25,13 +26,13 @@ const isNumber = (num: string) => {
   }
 };
 function parseText(text: string): Record<string, string> {
-  let lines = text.split("\r\n");
+  let lines = text.split('\r\n');
   if (lines.length < 10) {
-    lines = text.split("\n");
+    lines = text.split('\n');
   }
   const result: Record<string, string> = {};
   for (let i = 0; i < lines.length; i++) {
-    const parts = lines[i].split("=");
+    const parts = lines[i].split('=');
     const key = parts[0];
     const value = parts[1];
     if (value) {
@@ -49,6 +50,7 @@ const LayoutRender = ({
   document,
   background,
   externalTexts,
+  debug,
 }: LayoutRenderProps) => {
   const [et, setEt] = useState<Record<string, string> | null>(null);
   useEffect(() => {
@@ -60,111 +62,124 @@ const LayoutRender = ({
   if (et === null) {
     return <div>Loading</div>;
   }
+  /*
+      tWinWidth = tLayDefinition[#rect][1][3]
+      tWinHeight = tLayDefinition[#rect][1][4]
+  */
+
+  const isClientRectNull = () => {
+    return (
+      document.clientrect.left === 0 &&
+      document.clientrect.right === 0 &&
+      document.clientrect.top === 0 &&
+      document.clientrect.bottom === 0
+    );
+  };
   return (
     <>
       <div
         style={{
-          position: "relative",
-          display: "block",
+          position: 'relative',
+          display: 'block',
           top: 0,
           left: 0,
           width: 720,
           height: 540,
-          border: "1px dashed black",
+          border: '1px dashed black',
           fontSize: 10,
           background: background,
         }}
       >
         <div
           style={{
-            position: "absolute",
-            overflow: "hidden",
-            top: document.rect.top,
-            left: document.rect.left,
-            right: document.rect.right,
-            bottom: document.rect.bottom,
-            height: "100%",
-            width: "100%",
+            position: 'absolute',
+            overflow: 'hidden',
+            top: document.rect.top - document.clientrect.top,
+            left: document.rect.left - document.clientrect.left,
+            right: document.rect.right - document.clientrect.right,
+            bottom: document.rect.bottom - document.clientrect.bottom,
+            height: isClientRectNull() ? '100%' : document.rect.bottom,
+            width: isClientRectNull() ? '100%' : document.rect.right,
           }}
         >
           {document.elements?.map((element, index) => {
             let styles: CSSProperties = {
               opacity: element.blend > 100 ? 1 : element.blend / 100,
-              position: "absolute",
+              position: 'absolute',
               cursor:
-                element.cursor === "cursor.finger" ? "pointer" : "default",
+                element.cursor === 'cursor.finger' ? 'pointer' : 'default',
               display:
-                element.type !== "button"
-                  ? element.member.includes("mask") ||
-                    element.member.includes("pixel.black")
-                    ? "none"
-                    : "flex"
-                  : "flex",
+                element.type !== 'button'
+                  ? element.member.includes('mask') ||
+                    element.member.includes('pixel.black')
+                    ? 'none'
+                    : 'flex'
+                  : 'flex',
               background: getBackground(document, element),
-              width: element.type !== "button" ? element.width : undefined,
-              height: element.type !== "button" ? element.height : undefined,
-              flexWrap: "wrap",
-              flexDirection: "column",
+              width: element.type !== 'button' ? element.width : undefined,
+              height: element.type !== 'button' ? element.height : undefined,
+              flexWrap: 'wrap',
+              flexDirection: 'column',
               backgroundSize: getBackgroundSize(element),
               backgroundColor:
-                element.member === "shadow.pixel"
-                  ? element.type === "button"
-                    ? ""
-                    : "purple"
-                  : element.bgColor !== "null"
+                element.member === 'shadow.pixel'
+                  ? element.type === 'button'
+                    ? ''
+                    : 'purple'
+                  : element.bgColor !== 'null'
                   ? element.bgColor
-                  : "white",
+                  : 'white',
               left: getStyleLeft(element),
               top: getStyleTop(element),
               alignContent: element.alignment
                 ? getAlignment(element)
-                : "center",
+                : 'center',
               textDecoration: element.fontStyle,
               backgroundRepeat:
-                element.type === "button" || element.type !== "piece"
-                  ? "no-repeat"
-                  : "repeat",
+                element.type === 'button' || element.type !== 'piece'
+                  ? 'no-repeat'
+                  : 'repeat',
               fontFamily:
-                element.font === "" || !isNumber(element.font)
+                element.font === '' || !isNumber(element.font)
                   ? element.font
-                  : "Comic Sans MS",
-              fontSize: !isNaN(element.fontSize) ? element.fontSize : "0",
+                  : 'Comic Sans MS',
+              fontSize: !isNaN(element.fontSize) ? element.fontSize : '0',
               transform: getTransform(element),
-              color: "#" + element.txtColor,
+              color: '#' + element.txtColor,
               textAlign:
-                element.type !== "button"
+                element.type !== 'button'
                   ? (element.alignment as
-                      | "start"
-                      | "end"
-                      | "left"
-                      | "right"
-                      | "center"
-                      | "justify"
-                      | "match-parent") ?? "left"
+                      | 'start'
+                      | 'end'
+                      | 'left'
+                      | 'right'
+                      | 'center'
+                      | 'justify'
+                      | 'match-parent') ?? 'left'
                   : undefined,
             };
 
             return (
               <div
                 aria-label={element.id}
-                key={document.name + "_" + index}
+                key={document.name + '_' + index}
                 style={styles}
               >
-                {element.type === "text" ? (
+                {element.type === 'text' ? (
                   et && et[element.key] ? (
                     <div
                       dangerouslySetInnerHTML={{
-                        __html: et[element.key].replaceAll("\\r", "<br />"),
+                        __html: et[element.key].replaceAll('\\r', '<br />'),
                       }}
                     ></div>
                   ) : (
-                    ""
+                    ''
                   )
                 ) : (
-                  ""
+                  ''
                 )}
-                {element.media === "text" ? `--?--` : ""}
-                {element.type === "button" && (
+                {element.media === 'text' ? `--?--` : ''}
+                {element.type === 'button' && (
                   <ButtonRender
                     parentDocument={document}
                     parentElement={element}
@@ -176,8 +191,16 @@ const LayoutRender = ({
           })}
         </div>
       </div>
-      <code style={{ background: "#ccc" }}>
-        <pre style={{ width: "100%", textAlign: "left" }}>
+      <code
+        style={{
+          background: '#ccc',
+          maxHeight: '520px',
+          overflowX: 'hidden',
+          overflowY: 'scroll',
+          display: debug ? 'block' : 'none',
+        }}
+      >
+        <pre style={{ width: '100%', textAlign: 'left' }}>
           {JSON.stringify(document, null, 2)}
         </pre>
       </code>

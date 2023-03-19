@@ -1,8 +1,8 @@
-import { CSSProperties, useEffect, useState } from "react";
-import LayoutDocument from "../../types/LayoutDocument";
-import LayoutElement from "../../types/LayoutElement";
-import assetUrl from "../../utils/assetUrl";
-import getElements from "../../utils/getElements";
+import { CSSProperties, useEffect, useState } from 'react';
+import LayoutDocument from '../../types/LayoutDocument';
+import LayoutElement from '../../types/LayoutElement';
+import assetUrl from '../../utils/assetUrl';
+import getElements from '../../utils/getElements';
 
 interface ButtonRenderProps {
   parentElement: LayoutElement;
@@ -11,7 +11,7 @@ interface ButtonRenderProps {
 }
 
 const getButtonLayout = (element: LayoutElement) => {
-  return fetch(assetUrl(`button${element.model}`, "element")).then(
+  return fetch(assetUrl(`button${element.model}`, 'element')).then(
     (response) => {
       return response.text();
     }
@@ -44,24 +44,24 @@ const ButtonRender = ({
       {buttonParts?.map((part, index) => {
         const buttonTextContent = () => {
           try {
-            return externalTexts[parentElement.key].replaceAll("\\r", "<br />");
+            return externalTexts[parentElement.key].replaceAll('\\r', '<br />');
           } catch (e) {
-            console.error("failed to put button content, ", parentElement.key);
-            return "";
+            console.error('failed to put button content, ', parentElement.key);
+            return '';
           }
         };
         console.log(part.buttonProps.text.alignment);
         const leftAsset = assetUrl(
-          part.buttonProps.members.left.member ?? "",
-          "png"
+          part.buttonProps.members.left.member ?? '',
+          'png'
         );
         const middleAsset = assetUrl(
-          part.buttonProps.members.middle.member ?? "",
-          "png"
+          part.buttonProps.members.middle.member ?? '',
+          'png'
         );
         const rightAsset = assetUrl(
-          part.buttonProps.members.right.member ?? "",
-          "png"
+          part.buttonProps.members.right.member ?? '',
+          'png'
         );
         const leftPart: CSSProperties = {
           background: `url(${leftAsset}) left top no-repeat`,
@@ -70,34 +70,35 @@ const ButtonRender = ({
           background: `url(${middleAsset}) center top repeat-x`,
           height: parentElement.height,
           maxWidth: parentElement.maxwidth,
-          fontSize: part.buttonProps.text.fontSize ?? "",
-          fontFamily: part.buttonProps.text.font ?? "",
-          fontStyle: part.buttonProps.text.fontStyle ?? "",
-          paddingTop: part.buttonProps.text.marginV ?? "",
+          width: parentElement.width,
+          fontSize: part.buttonProps.text.fontSize ?? '',
+          fontFamily: part.buttonProps.text.font ?? '',
+          fontStyle: part.buttonProps.text.fontStyle ?? '',
+          paddingTop: part.buttonProps.text.marginV ?? '',
           paddingLeft:
-            part.buttonProps.text.alignment !== "center"
-              ? part.buttonProps.text.marginH ?? ""
-              : "",
+            part.buttonProps.text.alignment !== 'center'
+              ? part.buttonProps.text.marginH ?? ''
+              : '',
           paddingRight:
-            part.buttonProps.text.alignment !== "center"
-              ? part.buttonProps.text.marginH ?? ""
-              : "",
+            part.buttonProps.text.alignment !== 'center'
+              ? part.buttonProps.text.marginH ?? ''
+              : '',
           textAlign:
             (part.buttonProps.text.alignment as
-              | "start"
-              | "end"
-              | "left"
-              | "right"
-              | "center"
-              | "justify"
-              | "match-parent") ?? "left",
+              | 'start'
+              | 'end'
+              | 'left'
+              | 'right'
+              | 'center'
+              | 'justify'
+              | 'match-parent') ?? 'left',
         };
         console.log(part);
         const rightPart: CSSProperties = {
           background: `url(${rightAsset}) right top no-repeat`,
-          transform: part.buttonProps.members.right.cast?.includes("flipH")
-            ? "scaleX(-1)"
-            : "",
+          transform: part.buttonProps.members.right.cast?.includes('flipH')
+            ? 'scaleX(-1)'
+            : '',
         };
         /*const buttonStyles: CSSProperties = {
           height: parentElement.height,
@@ -124,13 +125,13 @@ const ButtonRender = ({
         };*/
 
         const buttonStyles: CSSProperties = {
-          display: "flex",
+          display: 'flex',
           justifyContent:
-            parentElement.alignment === "right"
-              ? "flex-end"
-              : parentElement.alignment === "center"
-              ? "center"
-              : "flex-start",
+            parentElement.alignment === 'right'
+              ? 'flex-end'
+              : parentElement.alignment === 'center'
+              ? 'center'
+              : 'flex-start',
           width: parentElement.width,
           height: parentElement.height,
         };
@@ -142,7 +143,7 @@ const ButtonRender = ({
                 <img src={leftAsset} alt="left" />
               </div>
               <div
-                key={part.member + "_" + index}
+                key={part.member + '_' + index}
                 style={middlePart}
                 dangerouslySetInnerHTML={{
                   __html: buttonTextContent(),
