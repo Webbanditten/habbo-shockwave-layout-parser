@@ -35,6 +35,7 @@ interface LayoutElement {
   ink: number;
   blend: number;
   width: number;
+  wrapperId: string;
   height: number;
   palette: string;
   type: string;
