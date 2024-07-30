@@ -145,7 +145,7 @@ const getStyleTop = (document: LayoutDocument, element: LayoutElement) => {
   }
 
   if (element.member === 'flat_floor_0_a_0_0_0') {
-    top = 2;
+    top = 1;
   }
 
   if (element.member === 'left_wallend_0_b_0_0_0') {
@@ -153,7 +153,7 @@ const getStyleTop = (document: LayoutDocument, element: LayoutElement) => {
   }
 
   if (element.member === 'right_wallend_0_b_0_2_0') {
-    top = element.height - 22;
+    top = element.height - 21;
   }
 
   return -top;
@@ -265,6 +265,7 @@ const RoomRender = ({
 
             return (
               <div
+                draggable={true}
                 aria-label={element.id}
                 key={document.name + '_' + index}
                 style={styles}
