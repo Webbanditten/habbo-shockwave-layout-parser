@@ -1,5 +1,10 @@
 import LayoutElement from './LayoutElement';
-
+export interface Rect {
+  top: number;
+  left: number;
+  right: number;
+  bottom: number;
+}
 interface LayoutDocument {
   name: string | null;
   date: string | null;

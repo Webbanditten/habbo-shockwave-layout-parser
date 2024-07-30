@@ -39,6 +39,7 @@ const getDocumentRect = (document: string) => {
   let rect = getDocumentTagValue(document, 'rect');
   if (rect === null) rect = '[0,0,0,0]';
   const rectArray = rect.replace('[', '').replace(']', '').split(',');
+
   return {
     left: parseInt(rectArray[0]),
     top: parseInt(rectArray[1]),
