@@ -145,7 +145,7 @@ const getStyleTop = (document: LayoutDocument, element: LayoutElement) => {
   }
 
   if (element.member === 'flat_floor_0_a_0_0_0') {
-    top = 1;
+    top = 2;
   }
 
   if (element.member === 'left_wallend_0_b_0_0_0') {
@@ -153,7 +153,7 @@ const getStyleTop = (document: LayoutDocument, element: LayoutElement) => {
   }
 
   if (element.member === 'right_wallend_0_b_0_2_0') {
-    top = element.height - 21;
+    top = element.height - 22;
   }
 
   return -top;
@@ -177,6 +177,18 @@ const getStyleRight = (document: LayoutDocument, element: LayoutElement) => {
   );
   const right = 0;
   return -right;
+};
+
+const getZIndex = (element: LayoutElement, index: number) => {
+  if (element.member === 'left_wallend_0_b_0_0_0') {
+    return 1000;
+  }
+
+  if (element.member === 'right_wallend_0_b_0_2_0') {
+    return 1000;
+  }
+  // Reverse index so that the last element is on top
+  return index;
 };
 
 const RoomRender = ({
@@ -247,7 +259,7 @@ const RoomRender = ({
               marginRight: getStyleRight(document, element),
               marginBottom: getStyleBottom(document, element),
               backgroundRepeat: 'no-repeat',
-
+              zIndex: getZIndex(element, index),
               transform: getTransform(element),
             };
 

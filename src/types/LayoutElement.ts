@@ -44,6 +44,8 @@ interface LayoutElement {
   alignment: string;
   maxwidth: number;
   fixedsize: number;
+  locX: number;
+  locY: number;
   cursor: string;
   font: string;
   fontSize: number;
