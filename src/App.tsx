@@ -7,7 +7,7 @@ import RoomRender from './components/RoomRender/RoomRender';
 
 function App() {
   const [windowIndex, setWindowIndex] = React.useState<number>(
-    windows.windows.findIndex((window) => window === 'purse.window')
+    windows.windows.findIndex((window) => window === 'model_x.room')
   );
   const [background, setBackground] = React.useState<string>('#ffffff');
   const [externalTexts, setExternalTexts] =

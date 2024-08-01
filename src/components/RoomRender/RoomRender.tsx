@@ -89,32 +89,56 @@ const getStyleLeft = (document: LayoutDocument, element: LayoutElement) => {
     document.roomdata.offsety,
     document.rect
   );
-  if (element.member === 'leftdoor_open') {
-    left = 6 - document.roomdata.factory / 2;
-  }
+  if (element.flipH !== 1) {
+    if (element.member === 'leftdoor_open') {
+      left = 6 - document.roomdata.factory / 2;
+    }
 
-  if (element.member === 'left_wallmask_0_a_0_0_0') {
-    left = -element.width / 2 + 2 - document.roomdata.factory / 2;
-  }
+    if (element.member === 'leftdoor_open_mask') {
+      left = 6 - document.roomdata.factory / 2;
+    }
 
-  if (element.member === 'left_wallpart_0_a_0_0_0') {
-    left = -element.width / 2 - document.roomdata.factory / 2;
-  }
+    if (element.member === 'left_wallmask_0_a_0_0_0') {
+      left = -element.width / 2 + 2 - document.roomdata.factory / 2;
+    }
 
-  if (element.member === 'right_wallpart_0_a_0_2_0') {
-    left = element.width / 2 - document.roomdata.factory / 2;
-  }
+    if (element.member === 'left_wallpart_0_a_0_0_0') {
+      left = -element.width / 2 - document.roomdata.factory / 2;
+    }
 
-  if (element.member === 'flat_floor_0_a_0_0_0') {
-    left = 0;
-  }
+    if (element.member === 'right_wallpart_0_a_0_2_0') {
+      left = element.width / 2 - document.roomdata.factory / 2;
+    }
 
-  if (element.member === 'left_wallend_0_b_0_0_0') {
-    left = -element.width - document.roomdata.factory / 2 - 2;
-  }
+    if (element.member === 'flat_floor_0_a_0_0_0') {
+      left = 0;
+    }
 
-  if (element.member === 'right_wallend_0_b_0_2_0') {
-    left = element.width - document.roomdata.factory - 7;
+    if (element.member === 'left_wallend_0_b_0_0_0') {
+      left = -element.width - document.roomdata.factory / 2 - 2;
+    }
+
+    if (element.member === 'right_wallend_0_b_0_2_0') {
+      left = element.width - document.roomdata.factory - 7;
+    }
+    if (element.member === 'left_wallpart2_0_a_0_0_0') {
+      left = -element.width;
+    }
+
+    if (element.member === 'right_stairs2_0_a_0_2_0') {
+      left = 0;
+    }
+    if (element.member === 'right_stairs1_0_a_0_2_0') {
+      left = 0;
+    }
+    if (element.member === 'right_wallend2_0_b_0_2_0') {
+      left = element.width / 2 - document.roomdata.factory - 3;
+    }
+  } else {
+    left = element.width;
+    if (element.member === 'flat_floor_0_a_0_0_0') {
+      left = element.width;
+    }
   }
 
   return -left;
@@ -127,35 +151,62 @@ const getStyleTop = (document: LayoutDocument, element: LayoutElement) => {
     document.roomdata.offsety,
     document.rect
   );
+  if (element.flipH !== 1) {
+    if (element.member === 'right_wallend2_0_b_0_2_0') {
+      top = element.height - document.roomdata.factory / 2 + -5;
+    }
+    if (element.member === 'right_wallpart2_0_a_0_2_0') {
+      top = element.height - 16;
+    }
 
-  if (element.member === 'leftdoor_open') {
-    top = element.height - 4 - document.roomdata.factory / 2;
-  }
+    if (element.member === 'flat_stair_0_a_0_0_0') {
+      top = 1;
+    }
 
-  if (element.member === 'left_wallmask_0_a_0_0_0') {
-    top = element.height - document.roomdata.factory / 2;
-  }
+    if (element.member === 'left_wallpart2_0_a_0_0_0') {
+      top = element.height - 16;
+    }
 
-  if (element.member === 'left_wallpart_0_a_0_0_0') {
-    top = element.height - document.roomdata.factory / 2;
-  }
+    if (element.member === 'right_stairs2_0_a_0_2_0') {
+      top = element.height - 16;
+    }
+    if (element.member === 'right_stairs1_0_a_0_2_0') {
+      top = element.height - 32;
+    }
 
-  if (element.member === 'right_wallpart_0_a_0_2_0') {
-    top = element.height - document.roomdata.factory / 2;
-  }
+    if (element.member === 'leftdoor_open') {
+      top = element.height - 4 - document.roomdata.factory / 2;
+    }
 
-  if (element.member === 'flat_floor_0_a_0_0_0') {
+    if (element.member === 'leftdoor_open_mask') {
+      top = element.height - 4 - document.roomdata.factory / 2;
+    }
+    if (element.member === 'left_wallmask_0_a_0_0_0') {
+      top = element.height - document.roomdata.factory / 2;
+    }
+
+    if (element.member === 'left_wallpart_0_a_0_0_0') {
+      top = element.height - document.roomdata.factory / 2;
+    }
+
+    if (element.member === 'right_wallpart_0_a_0_2_0') {
+      top = element.height - document.roomdata.factory / 2;
+    }
+
+    if (element.member === 'flat_floor_0_a_0_0_0') {
+      top = 1;
+    }
+
+    if (element.member === 'left_wallend_0_b_0_0_0') {
+      top = element.height - 22;
+    }
+
+    if (element.member === 'right_wallend_0_b_0_2_0') {
+      top = element.height - 21;
+    }
+  } else {
     top = 1;
   }
-
-  if (element.member === 'left_wallend_0_b_0_0_0') {
-    top = element.height - 22;
-  }
-
-  if (element.member === 'right_wallend_0_b_0_2_0') {
-    top = element.height - 21;
-  }
-
   return -top;
 };
 

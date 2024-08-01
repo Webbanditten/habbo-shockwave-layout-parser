@@ -1,0 +1,80 @@
+<room>
+
+	<name>
+		"model_x"
+	</name>
+
+	<date>
+		30/07/2024 / 22:29 
+	</date>
+
+	<version>
+		1.1
+	</version>
+
+	<elements>
+		[#member: "left_wallend_0_b_0_0_0", #media: #bitmap, #locH: -9, #locV: 186, #ink: 41, #blend: 100, #width: 7, #height: 122, #palette: "wall_testpattern2", #wrapperID: "wall01", #typeDef: #wallleft, #catchEvents: 0, #locX: 0, #locY: 0]
+		[#member: "left_wallpart_0_a_0_0_0", #media: #bitmap, #locH: -9, #locV: 186, #ink: 41, #blend: 100, #width: 32, #height: 132, #palette: "wall_testpattern2", #wrapperID: "wall01", #typeDef: #wallleft, #catchEvents: 0, #locX: 1, #locY: 9, #locZ: -60000]
+		[#member: "left_wallpart_0_a_0_0_0", #media: #bitmap, #locH: 23, #locV: 170, #ink: 41, #blend: 100, #width: 32, #height: 132, #palette: "wall_testpattern2", #wrapperID: "wall01", #typeDef: #wallleft, #catchEvents: 0, #locX: 1, #locY: 8]
+		[#member: "left_wallmask_0_a_0_0_0", #media: #bitmap, #locH: 55, #locV: 154, #ink: 41, #blend: 100, #width: 33, #height: 132, #palette: "wall_testpattern2", #wrapperID: "wall01", #typeDef: #wallleft, #catchEvents: 0, #locX: 1, #locY: 7]
+		[#member: "left_wallpart_0_a_0_0_0", #media: #bitmap, #locH: 87, #locV: 138, #ink: 41, #blend: 100, #width: 32, #height: 132, #palette: "wall_testpattern2", #wrapperID: "wall01", #typeDef: #wallleft, #catchEvents: 0, #locX: 1, #locY: 6]
+		[#member: "left_wallpart_0_a_0_0_0", #media: #bitmap, #locH: 119, #locV: 122, #ink: 41, #blend: 100, #width: 32, #height: 132, #palette: "wall_testpattern2", #wrapperID: "wall01", #typeDef: #wallleft, #catchEvents: 0, #locX: 1, #locY: 5]
+		[#member: "right_wallpart_0_a_0_2_0", #media: #bitmap, #locH: 183, #locV: 122, #ink: 41, #blend: 100, #width: 32, #height: 133, #palette: "wall_testpattern2", #wrapperID: "wall02", #typeDef: #wallright, #catchEvents: 0, #locX: 2, #locY: 4, #locZ: -60000]
+		[#member: "right_wallpart_0_a_0_2_0", #media: #bitmap, #locH: 215, #locV: 138, #ink: 41, #blend: 100, #width: 32, #height: 133, #palette: "wall_testpattern2", #wrapperID: "wall02", #typeDef: #wallright, #catchEvents: 0, #locX: 2, #locY: 4, #locZ: -60000]
+		[#member: "right_wallpart_0_a_0_2_0", #media: #bitmap, #locH: 247, #locV: 154, #ink: 41, #blend: 100, #width: 32, #height: 133, #palette: "wall_testpattern2", #wrapperID: "wall02", #typeDef: #wallright, #catchEvents: 0, #locX: 2, #locY: 4, #locZ: -60000]
+		[#member: "right_wallpart_0_a_0_2_0", #media: #bitmap, #locH: 279, #locV: 170, #ink: 41, #blend: 100, #width: 32, #height: 133, #palette: "wall_testpattern2", #wrapperID: "wall02", #typeDef: #wallright, #catchEvents: 0, #locX: 3, #locY: 4]
+		[#member: "right_wallpart_0_a_0_2_0", #media: #bitmap, #locH: 311, #locV: 186, #ink: 41, #blend: 100, #width: 32, #height: 133, #palette: "wall_testpattern2", #wrapperID: "wall02", #typeDef: #wallright, #catchEvents: 0, #locX: 4, #locY: 4]
+		[#member: "right_stairs1_0_a_0_2_0", #media: #bitmap, #locH: 343, #locV: 202, #ink: 41, #blend: 100, #width: 32, #height: 149, #palette: "wall_white", #wrapperID: "wall02", #typeDef: #wallright, #catchEvents: 0, #locX: 5, #locY: 4]
+		[#member: "right_stairs2_0_a_0_2_0", #media: #bitmap, #locH: 375, #locV: 250, #ink: 41, #blend: 100, #width: 32, #height: 165, #palette: "wall_white", #wrapperID: "wall02", #typeDef: #wallright, #catchEvents: 0, #locX: 6, #locY: 4]
+		[#member: "left_wallpart2_0_a_0_0_0", #media: #bitmap, #locH: 375, #locV: 250, #ink: 41, #blend: 100, #width: 32, #height: 164, #palette: "wall_white", #wrapperID: "wall03", #typeDef: #wallleft, #catchEvents: 0, #locX: 6, #locY: 4, #locZ: -60000]
+		[#member: "left_wallpart2_0_a_0_0_0", #media: #bitmap, #locH: 407, #locV: 234, #ink: 41, #blend: 100, #width: 32, #height: 164, #palette: "wall_white", #wrapperID: "wall03", #typeDef: #wallleft, #catchEvents: 0, #locX: 6, #locY: 3]
+		[#member: "left_wallpart2_0_a_0_0_0", #media: #bitmap, #locH: 439, #locV: 218, #ink: 41, #blend: 100, #width: 32, #height: 164, #palette: "wall_white", #wrapperID: "wall03", #typeDef: #wallleft, #catchEvents: 0, #locX: 6, #locY: 2]
+		[#member: "right_wallpart2_0_a_0_2_0", #media: #bitmap, #locH: 503, #locV: 218, #ink: 41, #blend: 100, #width: 32, #height: 165, #palette: "wall_white", #wrapperID: "wall04", #typeDef: #wallright, #catchEvents: 0, #locX: 7, #locY: 1, #locZ: -60000]
+		[#member: "right_wallpart2_0_a_0_2_0", #media: #bitmap, #locH: 535, #locV: 234, #ink: 41, #blend: 100, #width: 32, #height: 165, #palette: "wall_white", #wrapperID: "wall04", #typeDef: #wallright, #catchEvents: 0, #locX: 8, #locY: 1]
+		[#member: "right_wallpart2_0_a_0_2_0", #media: #bitmap, #locH: 567, #locV: 250, #ink: 41, #blend: 100, #width: 32, #height: 165, #palette: "wall_white", #wrapperID: "wall04", #typeDef: #wallright, #catchEvents: 0, #locX: 9, #locY: 1]
+		[#member: "right_wallpart2_0_a_0_2_0", #media: #bitmap, #locH: 599, #locV: 266, #ink: 41, #blend: 100, #width: 32, #height: 165, #palette: "wall_white", #wrapperID: "wall04", #typeDef: #wallright, #catchEvents: 0, #locX: 10, #locY: 1]
+		[#member: "right_wallpart2_0_a_0_2_0", #media: #bitmap, #locH: 631, #locV: 282, #ink: 41, #blend: 100, #width: 32, #height: 165, #palette: "wall_white", #wrapperID: "wall04", #typeDef: #wallright, #catchEvents: 0, #locX: 11, #locY: 1]
+		[#member: "right_wallend2_0_b_0_2_0", #media: #bitmap, #locH: 631, #locV: 282, #ink: 41, #blend: 100, #width: 7, #height: 154, #palette: "wall_white", #wrapperID: "wall04", #typeDef: #wallright, #catchEvents: 0, #locX: 0, #locY: 0]
+		[#member: "landscape_bg", #media: #bitmap, #locH: 0, #locV: 0, #ink: 8, #blend: 0, #width: 720, #height: 400, #locZ: -50000, #type: "piece", #id: "landscape", #strech: #fixed]
+		[#member: "flat_floor_0_a_0_0_0", #flipH: 1, #media: #bitmap, #locH: 248, #locV: 123, #ink: 41, #blend: 100, #width: 130, #height: 71, #bgColor: "#999966", #palette: "floor_basic", #wrapperID: "floor01", #typeDef: #floor, #catchEvents: 1, #locX: 0, #locY: 0, #locZ: -100000]
+		[#member: "flat_floor_0_a_0_0_0", #flipH: 1, #media: #bitmap, #locH: 184, #locV: 155, #ink: 41, #blend: 100, #width: 130, #height: 71, #bgColor: "#999966", #palette: "floor_basic", #wrapperID: "floor01", #typeDef: #floor, #catchEvents: 1, #locX: 0, #locY: 0]
+		[#member: "flat_floor_0_a_0_0_0", #flipH: 1, #media: #bitmap, #locH: 152, #locV: 171, #ink: 41, #blend: 100, #width: 130, #height: 71, #bgColor: "#999966", #palette: "floor_basic", #wrapperID: "floor01", #typeDef: #floor, #catchEvents: 1, #locX: 0, #locY: 0]
+		[#member: "flat_floor_0_a_0_0_0", #flipH: 1, #media: #bitmap, #locH: 312, #locV: 155, #ink: 41, #blend: 100, #width: 130, #height: 71, #bgColor: "#999966", #palette: "floor_basic", #wrapperID: "floor01", #typeDef: #floor, #catchEvents: 1, #locX: 0, #locY: 0, #locZ: -100000]
+		[#member: "flat_floor_0_a_0_0_0", #flipH: 1, #media: #bitmap, #locH: 248, #locV: 187, #ink: 41, #blend: 100, #width: 130, #height: 71, #bgColor: "#999966", #palette: "floor_basic", #wrapperID: "floor01", #typeDef: #floor, #catchEvents: 1, #locX: 0, #locY: 0]
+		[#member: "flat_floor_0_a_0_0_0", #flipH: 1, #media: #bitmap, #locH: 216, #locV: 203, #ink: 41, #blend: 100, #width: 130, #height: 71, #bgColor: "#999966", #palette: "floor_basic", #wrapperID: "floor01", #typeDef: #floor, #catchEvents: 1, #locX: 0, #locY: 0]
+		[#member: "flat_floor_0_a_0_0_0", #flipH: 1, #media: #bitmap, #locH: 344, #locV: 171, #ink: 41, #blend: 100, #width: 130, #height: 71, #bgColor: "#999966", #palette: "floor_basic", #wrapperID: "floor01", #typeDef: #floor, #catchEvents: 1, #locX: 0, #locY: 0]
+		[#member: "flat_floor_0_a_0_0_0", #flipH: 1, #media: #bitmap, #locH: 280, #locV: 203, #ink: 41, #blend: 100, #width: 130, #height: 71, #bgColor: "#999966", #palette: "floor_basic", #wrapperID: "floor01", #typeDef: #floor, #catchEvents: 1, #locX: 0, #locY: 0]
+		[#member: "flat_floor_0_a_0_0_0", #flipH: 1, #media: #bitmap, #locH: 248, #locV: 219, #ink: 41, #blend: 100, #width: 130, #height: 71, #bgColor: "#999966", #palette: "floor_basic", #wrapperID: "floor01", #typeDef: #floor, #catchEvents: 1, #locX: 0, #locY: 0]
+		[#member: "flat_stair_0_a_0_0_0", #media: #bitmap, #locH: 278, #locV: 203, #ink: 41, #blend: 100, #width: 130, #height: 103, #bgColor: "#999966", #palette: "floor_basic", #wrapperID: "floor01", #typeDef: #floor, #catchEvents: 1, #locX: 0, #locY: 0]
+		[#member: "flat_floor_0_a_0_0_0", #media: #bitmap, #locH: 438, #locV: 219, #ink: 41, #blend: 100, #width: 130, #height: 71, #bgColor: "#999966", #palette: "floor_basic", #wrapperID: "floor01", #typeDef: #floor, #catchEvents: 1, #locX: 0, #locY: 0]
+		[#member: "flat_floor_0_a_0_0_0", #media: #bitmap, #locH: 374, #locV: 251, #ink: 41, #blend: 100, #width: 130, #height: 71, #bgColor: "#999966", #palette: "floor_basic", #wrapperID: "floor01", #typeDef: #floor, #catchEvents: 1, #locX: 0, #locY: 0]
+		[#member: "flat_floor_0_a_0_0_0", #media: #bitmap, #locH: 310, #locV: 283, #ink: 41, #blend: 100, #width: 130, #height: 71, #bgColor: "#999966", #palette: "floor_basic", #wrapperID: "floor01", #typeDef: #floor, #catchEvents: 1, #locX: 0, #locY: 0]
+		[#member: "flat_floor_0_a_0_0_0", #media: #bitmap, #locH: 502, #locV: 251, #ink: 41, #blend: 100, #width: 130, #height: 71, #bgColor: "#999966", #palette: "floor_basic", #wrapperID: "floor01", #typeDef: #floor, #catchEvents: 1, #locX: 0, #locY: 0]
+		[#member: "flat_floor_0_a_0_0_0", #media: #bitmap, #locH: 438, #locV: 283, #ink: 41, #blend: 100, #width: 130, #height: 71, #bgColor: "#999966", #palette: "floor_basic", #wrapperID: "floor01", #typeDef: #floor, #catchEvents: 1, #locX: 0, #locY: 0]
+		[#member: "flat_floor_0_a_0_0_0", #media: #bitmap, #locH: 374, #locV: 315, #ink: 41, #blend: 100, #width: 130, #height: 71, #bgColor: "#999966", #palette: "floor_basic", #wrapperID: "floor01", #typeDef: #floor, #catchEvents: 1, #locX: 0, #locY: 0]
+		[#member: "flat_floor_0_a_0_0_0", #flipH: 1, #media: #bitmap, #locH: 664, #locV: 267, #ink: 41, #blend: 100, #width: 130, #height: 71, #bgColor: "#999966", #palette: "floor_basic", #wrapperID: "floor01", #typeDef: #floor, #catchEvents: 1, #locX: 0, #locY: 0]
+		[#member: "flat_floor_0_a_0_0_0", #flipH: 1, #media: #bitmap, #locH: 600, #locV: 299, #ink: 41, #blend: 100, #width: 130, #height: 71, #bgColor: "#999966", #palette: "floor_basic", #wrapperID: "floor01", #typeDef: #floor, #catchEvents: 1, #locX: 0, #locY: 0]
+		[#member: "flat_floor_0_a_0_0_0", #flipH: 1, #media: #bitmap, #locH: 536, #locV: 331, #ink: 41, #blend: 100, #width: 130, #height: 71, #bgColor: "#999966", #palette: "floor_basic", #wrapperID: "floor01", #typeDef: #floor, #catchEvents: 1, #locX: 0, #locY: 0]
+
+		[#member: "flat_floor_0_a_0_0_0", #flipH: 1, #media: #bitmap, #locH: 376, #locV: 379, #ink: 41, #blend: 100, #width: 130, #height: 71, #bgColor: "#999966", #palette: "floor_basic", #wrapperID: "floor01", #typeDef: #floor, #catchEvents: 1, #locX: 0, #locY: 0]
+		[#member: "flat_floor_0_a_0_0_0", #flipH: 1, #media: #bitmap, #locH: 344, #locV: 395, #ink: 41, #blend: 100, #width: 130, #height: 71, #bgColor: "#999966", #palette: "floor_basic", #wrapperID: "floor01", #typeDef: #floor, #catchEvents: 1, #locX: 0, #locY: 0]
+		[#member: "flat_stair_0_a_0_0_0", #flipH: 1, #media: #bitmap, #locH: 472, #locV: 363, #ink: 41, #blend: 100, #width: 130, #height: 103, #bgColor: "#999966", #palette: "floor_basic", #wrapperID: "floor01", #typeDef: #floor, #catchEvents: 1, #locX: 0, #locY: 0]
+		[#member: "flat_floor_0_a_0_0_0", #flipH: 1, #media: #bitmap, #locH: 408, #locV: 427, #ink: 41, #blend: 100, #width: 130, #height: 71, #bgColor: "#999966", #palette: "floor_basic", #wrapperID: "floor01", #typeDef: #floor, #catchEvents: 1, #locX: 0, #locY: 0]
+		[#member: "leftdoor_open", #media: #bitmap, #locH: 78, #locV: 149, #ink: 8, #blend: 100, #width: 32, #height: 101, #palette: #systemMac, #id: "command: GOAWAY", #Active: 1, #locZ: -80000]
+		[#member: "blockhilite", #media: #bitmap, #locH: 120, #locV: 218, #ink: 36, #blend: 100, #width: 64, #height: 32, #palette: #systemMac, #type: "hiliter", #id: "hiliter"]
+		[#member: "leftdoor_open_mask", #media: #bitmap, #locH: 77, #locV: 148, #ink: 8, #blend: 20, #width: 32, #height: 101, #palette: #systemMac, #id: "door_shadow", #Active: 0, #locZ: -59990]
+	</elements>
+
+	<rect>
+		[0, 0, 720, 482]
+	</rect>
+
+	<border>
+		[0, 0, 0, 0]
+	</border>
+
+	<roomdata>
+		[#offsetx: 311, #offsety: 91, #factorx: 64, #factory: 32, #factorh: 32]
+	</roomdata>
+
+</room>

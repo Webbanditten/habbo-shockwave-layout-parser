@@ -1,5 +1,7 @@
 {
   "windows": [
+    "model_w.room",
+    "model_x.room",
     "entry.visual",
     "habbo_hand.visual",
     "PurseNoTransactions.window",
