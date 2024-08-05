@@ -46,9 +46,9 @@ export const getBackground = (
   document: LayoutDocument,
   element: LayoutElement
 ) => {
-  if (element.member === 'flat_floor_0_a_0_0_0') {
+  /*if (element.member === 'flat_floor_0_a_0_0_0') {
     return `url(${assetUrl('flat_floor_2_a_0_0_0', 'png')})`;
-  }
+  }*/
 
   if (
     element.member === 'shadow.pixel' ||

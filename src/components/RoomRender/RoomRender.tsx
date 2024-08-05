@@ -42,53 +42,33 @@ const fetchExternalTexts = (externalTextsUrl: string) => {
 };
 
 const getLeft = (document: LayoutDocument) => {
-  const actualRect = adjustRect(
-    document.roomdata.offsetx,
-    document.roomdata.offsety,
-    document.rect
-  );
   // Shockwave lingo rect is an array of 4 values, left, top, right, bottom
   const left = 0;
   return left;
 };
 
 const getTop = (document: LayoutDocument) => {
-  const actualRect = adjustRect(
-    document.roomdata.offsetx,
-    document.roomdata.offsety,
-    document.rect
-  );
   const top = 0;
   return top;
 };
 
 const getBottom = (document: LayoutDocument) => {
-  const actualRect = adjustRect(
-    document.roomdata.offsetx,
-    document.roomdata.offsety,
-    document.rect
-  );
   const bottom = 0;
   return bottom;
 };
 
 const getRight = (document: LayoutDocument) => {
-  const actualRect = adjustRect(
-    document.roomdata.offsetx,
-    document.roomdata.offsety,
-    document.rect
-  );
   const right = 0;
   return right;
 };
 
 const getStyleLeft = (document: LayoutDocument, element: LayoutElement) => {
   let left = 0;
-  const actualRect = adjustRect(
+  /*const actualRect = adjustRect(
     document.roomdata.offsetx,
     document.roomdata.offsety,
     document.rect
-  );
+  );*/
   if (element.flipH !== 1) {
     if (element.member === 'leftdoor_open') {
       left = 6 - document.roomdata.factory / 2;
