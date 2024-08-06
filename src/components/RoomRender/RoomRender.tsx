@@ -1,5 +1,5 @@
 import { CSSProperties, useEffect, useState } from 'react';
-import LayoutDocument, { Rect } from '../../types/LayoutDocument';
+import LayoutDocument from '../../types/LayoutDocument';
 import LayoutElement from '../../types/LayoutElement';
 import {
   getBackground,
