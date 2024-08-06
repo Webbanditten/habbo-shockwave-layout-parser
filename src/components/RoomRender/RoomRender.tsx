@@ -126,11 +126,6 @@ const getStyleLeft = (document: LayoutDocument, element: LayoutElement) => {
 
 const getStyleTop = (document: LayoutDocument, element: LayoutElement) => {
   let top = 0;
-  const actualRect = adjustRect(
-    document.roomdata.offsetx,
-    document.roomdata.offsety,
-    document.rect
-  );
   if (element.flipH !== 1) {
     if (element.member === 'right_wallend2_0_b_0_2_0') {
       top = element.height - document.roomdata.factory / 2 + -5;
@@ -191,21 +186,11 @@ const getStyleTop = (document: LayoutDocument, element: LayoutElement) => {
 };
 
 const getStyleBottom = (document: LayoutDocument, element: LayoutElement) => {
-  const actualRect = adjustRect(
-    document.roomdata.offsetx,
-    document.roomdata.offsety,
-    document.rect
-  );
   const bottom = 0;
   return bottom;
 };
 
 const getStyleRight = (document: LayoutDocument, element: LayoutElement) => {
-  const actualRect = adjustRect(
-    document.roomdata.offsetx,
-    document.roomdata.offsety,
-    document.rect
-  );
   const right = 0;
   return -right;
 };
