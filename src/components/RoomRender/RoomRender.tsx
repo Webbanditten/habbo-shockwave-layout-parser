@@ -29,14 +29,14 @@ function parseText(text: string): Record<string, string> {
   return result;
 }
 
-const adjustRect = (tOffX: number, tOffY: number, rect: Rect): Rect => {
+/*const adjustRect = (tOffX: number, tOffY: number, rect: Rect): Rect => {
   return {
     left: rect.left - tOffX,
     top: rect.top - tOffY,
     right: rect.right - tOffX,
     bottom: rect.bottom - tOffY,
   };
-};
+};*/
 const fetchExternalTexts = (externalTextsUrl: string) => {
   return fetch(externalTextsUrl).then((response) => response.text());
 };
